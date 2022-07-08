@@ -7,8 +7,8 @@ el metodo func 2 retorna el resto es decir es el inverso del anterio
 
 2
 a-->5
-b-->
+b-->1
 c-->78
-d-->
+d-->0
 
 
