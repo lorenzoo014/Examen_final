@@ -34,6 +34,21 @@ from enum import Enum
 
 
 class EstadoHospitalario(Enum):
+    EN_CASA, ASISNTOMATICO, EN_PLANTA, EN_LA_UCI = range(1,4)
+    def str(x):
+        estado = x.lower()
+        objeto = None
+
+        for e in EstadoHospitalario:
+            if estado == e.name:     #explicacion---> la clase enum define por defecto el atributo name el cual te devuelve el nombre de la clave
+                a = e.value            #cuidado con esta sentencia esta bien aplicada porque esta en un escenario concreto gracias a la iteracion
+                e = EstadoHospitalario(a[0], a[1], a[2], a[3])
+                break
+
+        if type(objeto) != EstadoHospitalario:
+            raise TypeError("Invalid type for attribute nombre")
+
+        return objeto
     """Python class to implement an enumeration for the attribute EstadoHospitalario.
 
     This Python class implements an enumeration for the attribute EstadoHospitalario.

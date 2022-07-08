@@ -27,7 +27,7 @@ This Python method contains the application of the Game.
 """
 
 
-class Persona(): 
+class Persona():
     # Variables globales
 
     # Constructor

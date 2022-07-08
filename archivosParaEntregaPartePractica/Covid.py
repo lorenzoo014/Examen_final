@@ -11,7 +11,7 @@ this Python class.
 @project :  N/A
 @program :  N/A
 @file :  Covid.py
-@author : Ruben Juarez Cadiz 
+@author : Ruben Juarez Cadiz
 
 @version :  0.0.1, 26 December 2021
 @information :  The Zen of Python
@@ -30,8 +30,24 @@ this Python class.
 
 
 # Source packages.
-
+from auxiliar import Utilidades
 class Covid():
+  def __init__(self, nombre):
+    self.__nombre = nombre
+    self.__impacto = Utilidades.generaIntAleatorio(0,30)
+  def get_nombre(self):
+    return self.__nombre
+  def get_impacto(self):
+    return self.__impacto
+  def set_impacto(self,impacto):
+    if(type(impacto)!= int):
+      raise TypeError("")
+    elif(impacto<0 or impacto>30):
+      raise ValueError("debe esta entre 0 y 30")
+    self.__impacto = impacto
+  @staticmethod
+  def get_max_impacto():
+    return 30
   """Python class to implement the basic version of Covid.
 
   This Python class implements the basic version of Covid.
