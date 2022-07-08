@@ -65,6 +65,11 @@ class Persona():
         elif(x<0 or x>100):
             raise ValueError("")
         self.__cargaviral = x
+    def destructor(self,dni): #me acabo de dar cuenta que esta mal definido al ser una variable global pero no me da timepo a cambiarlo
+        if(type(dni)!=str):
+            raise TypeError("")
+        self.__listado_dni.pop(dni)
+
 
         """Constructor of the class.
         This special method is executed when an object of this class is
