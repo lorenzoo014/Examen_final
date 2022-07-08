@@ -26,12 +26,46 @@ This Python method contains the application of the Game.
               prohibited without the written consent of the copyright owner.
 """
 
-
+from auxiliar import Utilidades
 class Persona():
     # Variables globales
 
     # Constructor
     def __init__(self, persona_dni, nombre, hospital_input, edad):
+        if(type(persona_dni)!= str):
+            raise TypeError("")
+        self.__dni = persona_dni
+        self.__nombre = nombre
+        self.__estadohospitalario = hospital_input
+        self.__maxedad = 100
+        self.__edad = edad
+        self.__dosis = Utilidades.generaIntAleatorio(0,3)
+        self.__dosismaximas = 3
+        self.__cargaviral = 100-edad
+        self.__listado_dni = dict()
+        for clave in self.__listado_dni.keys():
+            if isinstance( clave, persona_dni):
+                raise ValueError("no se puede añadir la clave de un valor que ya esta en la lista")
+            else:
+                self.__listado_dni.update({self.__dni,self.__nombre})
+
+    def get_dni(self):
+        return self.__dni
+    def get_maxedad(self):
+        return self.__maxedad
+    def get_dosis(self):
+        return self.__dosis
+    def get_cargaviral(self):
+        return self.__cargaviral
+    def get_listadodni(self):
+        return self.__listado_dni.keys()
+    def set_cargaviral(self,x):
+        if(type(x)!= int):
+            raise TypeError("")
+        elif(x<0 or x>100):
+            raise ValueError("")
+        self.__cargaviral = x
+
         """Constructor of the class.
         This special method is executed when an object of this class is
         created.
