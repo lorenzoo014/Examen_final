@@ -367,6 +367,13 @@ class Persona(SerVivo):
 
 
     def infectado(self, Covid):
+        if(self.is_vivo == False):
+            pass
+        if(self.__cargaviral<0):
+            self.die()
+            return -1
+        else:
+            return self.__cargaviral
         """Esta función gestiona la carga viral de una persona que ha sido
         infectada por la c lase Covid.
         Returns
