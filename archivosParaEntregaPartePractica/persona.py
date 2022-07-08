@@ -26,8 +26,9 @@ This Python method contains the application of the Game.
               prohibited without the written consent of the copyright owner.
 """
 
+from archivosParaEntregaPartePractica.SerVivo import SerVivo
 from auxiliar import Utilidades
-class Persona():
+class Persona(SerVivo):
     # Variables globales
 
     # Constructor
@@ -49,26 +50,12 @@ class Persona():
             else:
                 self.__listado_dni.update({self.__dni,self.__nombre})
 
-    def get_dni(self):
-        return self.__dni
-    def get_maxedad(self):
-        return self.__maxedad
-    def get_dosis(self):
-        return self.__dosis
-    def get_cargaviral(self):
-        return self.__cargaviral
-    def get_listadodni(self):
-        return self.__listado_dni.keys()
-    def set_cargaviral(self,x):
-        if(type(x)!= int):
-            raise TypeError("")
-        elif(x<0 or x>100):
-            raise ValueError("")
-        self.__cargaviral = x
-    def destructor(self,dni): #me acabo de dar cuenta que esta mal definido al ser una variable global pero no me da timepo a cambiarlo
-        if(type(dni)!=str):
-            raise TypeError("")
-        self.__listado_dni.pop(dni)
+
+
+
+
+
+
 
 
         """Constructor of the class.
@@ -114,7 +101,8 @@ class Persona():
             >>> persona1 = Persona("12345678E","Francisco Hernando",EstadoHospitalario.PLANTA, 31)
         """
 
-    def get_CargaViral(self):
+    def get_cargaviral(self):
+        return self.__cargaviral
         """Method to get the attribute cargaViral of the object.
 
         Syntax
@@ -141,6 +129,7 @@ class Persona():
         """
     
     def get_dni(self):
+        return self.__dni
         """Method to get the attribute dni of the object.
 
         Syntax
@@ -165,9 +154,9 @@ class Persona():
           >>> obj_Persona = Persona()
           >>> obj_Persona.get_dni( )
         """
-
     @staticmethod
-    def get_max_edad():
+    def get_maxedad():
+        return 30
         """Method to get the attribute edad máxima of the object.
 
         Syntax
@@ -193,7 +182,8 @@ class Persona():
           >>> obj_Persona.get_CargaViral( )
         """
 
-    def get_list_dnis():
+    def get_listsdni(self):
+        return self.__listado_dni.keys()
         """Method to get la lista de dnis of the object.
 
         Syntax
@@ -219,7 +209,8 @@ class Persona():
           >>> obj_Persona.get_list_dnis( )
         """
 
-    def get_max_dosis():
+    def get_dosis(self):
+        return self.__dosis
         """Method to get número máximo de dosis of the object.
 
         Syntax
@@ -245,7 +236,12 @@ class Persona():
           >>> obj_Persona.get_max_dosis( )
         """
 
-    def set_CargaViral(self, nuevaCargaViral):
+    def set_CargaViral(self,x):
+        if(type(x)!= int):
+            raise TypeError("")
+        elif(x<0 or x>100):
+            raise ValueError("")
+        self.__cargaviral = x
         """Method to set the attribute cargaviral of the object.
 
         Method to set the attribute attack_rating based on a human-readable
@@ -277,7 +273,11 @@ class Persona():
           >>> obj_Persona.set_CargaViral(8)
         """
 
+
     def eliminarUsuario(self):
+        if(type(self.get_dni)!=str):
+            raise TypeError("")
+        self.__listado_dni.pop(self.get_dni())
         """Esta función elimina de la lista  el dni de la persona eliminada.
 
         Syntax
@@ -331,6 +331,14 @@ class Persona():
 
 
     def dosis_vacuna(self):
+        if(self.is_vivo == False):
+            pass
+        else:
+            azar = Utilidades.generaIntAleatorio(0,1)
+            if(azar == 0):
+                return 0
+            else:
+                return 1
         """Esta función añade una carda de vacuna a una persona si no
          supera el máximo de vacunas.
         Returns
