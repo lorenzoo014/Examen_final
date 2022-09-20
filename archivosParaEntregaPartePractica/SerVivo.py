@@ -2,6 +2,7 @@ class SerVivo:
 
     def __init__(self):
         self._vivo = True
+        print("Holaaaa")
     def is_vivo(self):
         return self._vivo
     def morir(self):
